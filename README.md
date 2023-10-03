@@ -47,56 +47,71 @@
 ## API Endpoints
 All API requests should be made to:
 ```
-http://localhost:8080/
+http://localhost:8080/api
 ```
 
-### `/attack` (POST)
+### `/advert-list/` (GET)
 
-Initiates a new attack with the provided package identifiers and target id.
+Получение списка объявлений
 
 #### Request
 
-- Method: POST
-- URL: `/attack`
-- Body: JSON object. targetId (required), url - full attack url (required), packages (required)
-
-```json
-{
-  "targetId": "123e4567-e89b-12d3-a456-426614174000",
-  "url": "https://tankbattlemania.com/operation-pillowfight",
-  "packages": [
-    "123e4567-e89b-12d3-a456-426614174000",
-    "123e4567-e89b-12d3-a456-426614174000",
-    "..."
-  ]
-}
-```
+- Method: GET
+- URL: `/advert-list/`
 
 #### Response
 
-- Status Code: 201 (Created)
-- Body: JSON object representing the package information (as per `IPackageInfo` structure)
+- Status Code: 200
+
+```json
+[
+    {
+        "id": 1,
+        "city": {
+            "name": "krakow"
+        },
+        "category": {
+            "name": "test 1"
+        },
+        "created": "2023-10-02T15:50:03.874711Z",
+        "title": "advert - 1",
+        "description": "desc advert - 1",
+        "views": 2
+    },
+  ...
+]
+```
+
+### `/advert/<id>/` (GET)
+
+Получение информации об объявлении используйте следующий запрос, заменив `<id>` на идентификатор объявления
+
+#### Request
+
+- Method: GET
+- URL: `/advert/<id>/`
+
+#### Response
+
+- Status Code: 200
 
 ```json
 {
-  "attackId": "123e4567-e89b-12d3-a456-426614174000",
-  "status": "pending"
+    "id": 1,
+    "city": {
+        "name": "krakow"
+    },
+    "category": {
+        "name": "test 1"
+    },
+    "created": "2023-10-02T15:50:03.874711Z",
+    "title": "advert - 1",
+    "description": "desc advert - 1",
+    "views": 3
 }
 ```
 
-## Шаг 7: Получить список объявлений
 
-Для получения списка объявлений используйте следующий запрос:
-``` bash 
-  GET /api/advert-list/
-```
-
-## Шаг 8: Получить информацию об объявлении
-
-Для получения информации об объявлении используйте следующий запрос, заменив `<id>` на идентификатор объявления:
-``` bash
-  GET /api/advert/<id>/
-```
 
 ## Запуск тестов
 
