@@ -4,6 +4,12 @@
 
 Следуйте этим шагам, чтобы установить и запустить проект.
 
+## Рабочая дерриктория
+```bash 
+  git clone https://github.com/EvaDigital/drf-test.git
+  cd drf-test
+```
+
 ## Шаг 1: Создать .env файл
 
 Создайте файл с именем `.env` в корневой директории проекта и заполните его данными по примеру из файла `.env_template`.
@@ -33,9 +39,50 @@
 
 Откройте браузер и перейдите по адресу:
 ``` bash 
-  http://0.0.0.0:8000/admin/
+  http://localhost:8000/admin/
 ```
 Войдите с использованием созданных учетных данных администратора и создайте тестовые данные.
+
+
+## API Endpoints
+All API requests should be made to:
+```
+http://localhost:8080/
+```
+
+### `/attack` (POST)
+
+Initiates a new attack with the provided package identifiers and target id.
+
+#### Request
+
+- Method: POST
+- URL: `/attack`
+- Body: JSON object. targetId (required), url - full attack url (required), packages (required)
+
+```json
+{
+  "targetId": "123e4567-e89b-12d3-a456-426614174000",
+  "url": "https://tankbattlemania.com/operation-pillowfight",
+  "packages": [
+    "123e4567-e89b-12d3-a456-426614174000",
+    "123e4567-e89b-12d3-a456-426614174000",
+    "..."
+  ]
+}
+```
+
+#### Response
+
+- Status Code: 201 (Created)
+- Body: JSON object representing the package information (as per `IPackageInfo` structure)
+
+```json
+{
+  "attackId": "123e4567-e89b-12d3-a456-426614174000",
+  "status": "pending"
+}
+```
 
 ## Шаг 7: Получить список объявлений
 
