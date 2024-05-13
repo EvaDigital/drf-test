@@ -1,5 +1,30 @@
 # drf-test
 
+## Architecture and technology
+### Modules
+
+1. **kaspi_backend**
+Contains:
+```sh
+- kaspi_backend
+ -- settings.py
+ -- urls.py
+ -- celery.py
+```
+Description: This is the main directory containing your Django project.
+
+1.1 **settings.py**
+Is the main settings file for Django project. It contains all the settings required for your Django application to work.
+
+The settings.py file defines settings such as database, authentication settings, static file settings, security keys, and more.
+
+This file defines the configuration of your project, and changes here affect the entire application in the project.
+
+2. **landing**
+3. **stores**
+4. **users**
+
+
 # Инструкция по установке и запуску проекта
 
 Следуйте этим шагам, чтобы установить и запустить проект.
